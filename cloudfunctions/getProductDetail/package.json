@@ -1,0 +1,6 @@
+{
+  "name": "getProductDetail",
+  "version": "1.0.0",
+  "description": "获取商品详情云函数",
+  "main": "index.js"
+}

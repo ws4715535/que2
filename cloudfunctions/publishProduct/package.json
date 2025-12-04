@@ -1,0 +1,6 @@
+{
+  "name": "publishProduct",
+  "version": "1.0.0",
+  "description": "发布商品云函数",
+  "main": "index.js"
+}

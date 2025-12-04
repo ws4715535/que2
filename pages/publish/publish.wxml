@@ -1,0 +1,71 @@
+<!--pages/publish/publish.wxml-->
+<view class="container">
+  <form bindsubmit="onSubmit">
+    <!-- 图片上传 -->
+    <view class="section">
+      <view class="section-title">商品图片</view>
+      <view class="image-upload">
+        <view class="upload-grid">
+          <block wx:for="{{images}}" wx:key="index">
+            <view class="image-item">
+              <image src="{{item}}" mode="aspectFill" bindtap="previewImage" data-src="{{item}}"></image>
+              <view class="delete-btn" bindtap="deleteImage" data-index="{{index}}">×</view>
+            </view>
+          </block>
+          <view class="upload-btn" wx:if="{{images.length < 9}}" bindtap="chooseImage">
+            <text class="upload-icon">+</text>
+            <text class="upload-text">{{images.length}}/9</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 商品信息 -->
+    <view class="section">
+      <view class="section-title">商品信息</view>
+      
+      <view class="form-item">
+        <text class="label">商品标题</text>
+        <input name="title" placeholder="请输入商品标题" required />
+      </view>
+      
+      <view class="form-item">
+        <text class="label">商品描述</text>
+        <textarea name="description" placeholder="请详细描述商品信息、使用情况等" required />
+      </view>
+      
+      <view class="form-item">
+        <text class="label">价格</text>
+        <input name="price" type="digit" placeholder="请输入价格" required />
+      </view>
+      
+      <view class="form-item">
+        <text class="label">分类</text>
+        <picker name="category" range="{{categories}}" range-key="name" bindchange="onCategoryChange">
+          <view class="picker">
+            {{categoryName || '请选择分类'}}
+            <text class="arrow">></text>
+          </view>
+        </picker>
+      </view>
+      
+      <view class="form-item">
+        <text class="label">新旧程度</text>
+        <picker name="condition" range="{{conditions}}" range-key="name" bindchange="onConditionChange">
+          <view class="picker">
+            {{conditionName || '请选择新旧程度'}}
+            <text class="arrow">></text>
+          </view>
+        </picker>
+      </view>
+      
+      <view class="form-item">
+        <text class="label">所在地区</text>
+        <input name="location" placeholder="请输入所在地区" required />
+      </view>
+    </view>
+
+    <!-- 提交按钮 -->
+    <button class="btn btn-primary submit-btn" form-type="submit">发布商品</button>
+  </form>
+</view>

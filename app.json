@@ -1,0 +1,46 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/detail/detail",
+    "pages/publish/publish",
+    "pages/profile/profile",
+    "pages/chat/chat",
+    "pages/messages/messages"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#2E7D32",
+    "navigationBarTitleText": "立直麻将装备交易",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#666",
+    "selectedColor": "#2E7D32",
+    "backgroundColor": "#FFF8E1",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        
+      },
+      {
+        "pagePath": "pages/publish/publish",
+        "text": "发布",
+        
+      },
+      {
+        "pagePath": "pages/messages/messages",
+        "text": "消息",
+        
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的",
+        
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "cloud": true
+}

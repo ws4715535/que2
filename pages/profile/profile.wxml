@@ -1,0 +1,64 @@
+<!--pages/profile/profile.wxml-->
+<view class="container">
+  <!-- 用户信息 -->
+  <view class="user-info card">
+    <view class="user-header">
+      <image class="user-avatar" src="{{userInfo.avatar || '/images/default-avatar.png'}}" mode="aspectFill"></image>
+      <view class="user-details">
+        <view class="user-name">{{userInfo.nickname || '微信用户'}}</view>
+        <view class="user-rating">
+          <text class="rating-score">{{userInfo.rating || 5.0}}分</text>
+          <text class="transaction-count">{{userInfo.soldCount || 0}}次成交</text>
+        </view>
+      </view>
+    </view>
+    
+    <view class="user-stats">
+      <view class="stat-item">
+        <text class="stat-number">{{userInfo.publishCount || 0}}</text>
+        <text class="stat-label">发布</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-number">{{userInfo.soldCount || 0}}</text>
+        <text class="stat-label">成交</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-number">{{userInfo.rating || 5.0}}</text>
+        <text class="stat-label">评分</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 功能列表 -->
+  <view class="function-list">
+    <view class="function-item" bindtap="onMyProductsTap">
+      <image class="function-icon" src="/images/product.png" mode="aspectFit"></image>
+      <text class="function-name">我的发布</text>
+      <text class="arrow">></text>
+    </view>
+    
+    <view class="function-item" bindtap="onMyFavoritesTap">
+      <image class="function-icon" src="/images/favorite.png" mode="aspectFit"></image>
+      <text class="function-name">我的收藏</text>
+      <text class="arrow">></text>
+    </view>
+    
+    <view class="function-item" bindtap="onTransactionsTap">
+      <image class="function-icon" src="/images/transaction.png" mode="aspectFit"></image>
+      <text class="function-name">交易记录</text>
+      <text class="arrow">></text>
+    </view>
+    
+    <view class="function-item" bindtap="onSettingsTap">
+      <image class="function-icon" src="/images/settings.png" mode="aspectFit"></image>
+      <text class="function-name">设置</text>
+      <text class="arrow">></text>
+    </view>
+  </view>
+
+  <!-- 登录/退出按钮 -->
+  <view class="auth-section">
+    <button class="btn btn-primary" wx:if="{{!isLoggedIn}}" bindtap="onLoginTap">微信登录</button>
+    <button class="btn btn-secondary" wx:else bindtap="onLogoutTap">退出登录</button>
+  </view>
+</view>

@@ -1,0 +1,27 @@
+<!--pages/chat/chat.wxml-->
+<view class="container">
+  <!-- 聊天消息列表 -->
+  <scroll-view scroll-y="true" class="chat-messages" scroll-into-view="{{scrollToView}}" scroll-with-animation="true">
+    <view class="message-list">
+      <block wx:for="{{messages}}" wx:key="id">
+        <view class="message-item {{item.fromUserId === currentUserId ? 'message-sent' : 'message-received'}}" id="msg-{{index}}">
+          <view class="message-bubble">
+            <text class="message-content">{{item.content}}</text>
+            <text class="message-time">{{formatTime(item.createdAt)}}</text>
+          </view>
+        </view>
+      </block>
+    </view>
+  </scroll-view>
+
+  <!-- 输入区域 -->
+  <view class="input-area">
+    <input class="message-input" 
+           placeholder="输入消息..." 
+           value="{{inputValue}}"
+           bindinput="onInputChange"
+           confirm-type="send"
+           bindconfirm="sendMessage" />
+    <button class="send-btn" bindtap="sendMessage" disabled="{{!inputValue.trim()}}">发送</button>
+  </view>
+</view>

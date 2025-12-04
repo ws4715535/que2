@@ -1,0 +1,71 @@
+<!--pages/detail/detail.wxml-->
+<view class="container">
+  <!-- 商品图片轮播 -->
+  <swiper class="product-images" indicator-dots="true" autoplay="false">
+    <block wx:if="{{product.images && product.images.length > 0}}">
+      <swiper-item wx:for="{{product.images}}" wx:key="index">
+        <image src="{{item}}" mode="aspectFill" bindtap="previewImage" data-src="{{item}}" data-urls="{{product.images}}"></image>
+      </swiper-item>
+    </block>
+    <block wx:else>
+      <swiper-item>
+        <image src="/images/default-product.png" mode="aspectFill"></image>
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <!-- 商品信息 -->
+  <view class="product-info card">
+    <view class="price-section">
+      <text class="current-price">¥{{product.price}}</text>
+      <text class="condition">{{product.condition}}</text>
+    </view>
+    
+    <view class="product-title">{{product.title}}</view>
+    <view class="product-desc">{{product.description}}</view>
+    
+    <view class="product-meta">
+      <view class="meta-item">
+        <text class="meta-label">分类：</text>
+        <text class="meta-value">{{getCategoryName(product.category)}}</text>
+      </view>
+      <view class="meta-item">
+        <text class="meta-label">地区：</text>
+        <text class="meta-value">{{product.location}}</text>
+      </view>
+      <view class="meta-item">
+        <text class="meta-label">浏览：</text>
+        <text class="meta-value">{{product.viewCount || 0}}次</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 卖家信息 -->
+  <view class="seller-info card" wx:if="{{product.seller}}">
+    <view class="seller-header">
+      <image class="seller-avatar" src="{{product.seller.avatar || '/images/default-avatar.png'}}" mode="aspectFill"></image>
+      <view class="seller-details">
+        <view class="seller-name">{{product.seller.nickname}}</view>
+        <view class="seller-rating">
+          <text class="rating-score">{{product.seller.rating || 5.0}}分</text>
+          <text class="transaction-count">{{product.seller.soldCount || 0}}次成交</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 操作按钮 -->
+  <view class="action-buttons">
+    <button class="btn btn-secondary" bindtap="onFavoriteTap">
+      <image class="btn-icon" src="/images/{{isFavorited ? 'favorited' : 'favorite'}}.png" mode="aspectFit"></image>
+      <text>{{isFavorited ? '已收藏' : '收藏'}}</text>
+    </button>
+    <button class="btn btn-primary" bindtap="onMessageTap">
+      <image class="btn-icon" src="/images/message.png" mode="aspectFit"></image>
+      <text>私信卖家</text>
+    </button>
+    <button class="btn btn-primary buy-btn" bindtap="onBuyTap">
+      <text>立即购买</text>
+    </button>
+  </view>
+</view>

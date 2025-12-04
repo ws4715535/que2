@@ -1,0 +1,6 @@
+{
+  "name": "sendMessage",
+  "version": "1.0.0",
+  "description": "发送消息云函数",
+  "main": "index.js"
+}

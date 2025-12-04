@@ -1,0 +1,35 @@
+<!--pages/messages/messages.wxml-->
+<view class="container">
+  <!-- 消息列表 -->
+  <scroll-view scroll-y="true" class="message-list">
+    <block wx:if="{{conversations.length > 0}}">
+      <view class="conversation-item" 
+            wx:for="{{conversations}}" 
+            wx:key="otherUserId"
+            bindtap="onConversationTap"
+            data-item="{{item}}">
+        
+        <image class="user-avatar" src="{{item.otherUser.avatar || '/images/default-avatar.png'}}" mode="aspectFill"></image>
+        
+        <view class="conversation-content">
+          <view class="conversation-header">
+            <text class="user-name">{{item.otherUser.nickname || '未知用户'}}</text>
+            <text class="message-time">{{formatTime(item.lastMessage.createdAt)}}</text>
+          </view>
+          
+          <view class="message-preview">
+            <text class="message-text">{{item.lastMessage.content}}</text>
+            <view class="unread-badge" wx:if="{{item.unreadCount > 0}}">{{item.unreadCount}}</view>
+          </view>
+        </view>
+      </view>
+    </block>
+    
+    <!-- 空状态 -->
+    <view class="empty-state" wx:else>
+      <image class="empty-icon" src="/images/empty-message.png" mode="aspectFit"></image>
+      <text>暂无消息</text>
+      <text class="empty-tip">点击商品详情页的"私信卖家"开始聊天</text>
+    </view>
+  </scroll-view>
+</view>

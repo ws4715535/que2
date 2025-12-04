@@ -1,0 +1,108 @@
+/* pages/messages/messages.wxss */
+.container {
+  background-color: #f5f5f5;
+  height: 100vh;
+}
+
+.message-list {
+  background: white;
+  margin: 20rpx;
+  border-radius: 16rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.conversation-item {
+  display: flex;
+  align-items: center;
+  padding: 30rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+  transition: background-color 0.2s;
+}
+
+.conversation-item:last-child {
+  border-bottom: none;
+}
+
+.conversation-item:active {
+  background-color: #f5f5f5;
+}
+
+.user-avatar {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+  flex-shrink: 0;
+}
+
+.conversation-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.conversation-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8rpx;
+}
+
+.user-name {
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #333;
+}
+
+.message-time {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.message-preview {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.message-text {
+  font-size: 28rpx;
+  color: #666;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-right: 20rpx;
+}
+
+.unread-badge {
+  background: #ff4444;
+  color: white;
+  font-size: 20rpx;
+  padding: 4rpx 10rpx;
+  border-radius: 50%;
+  min-width: 32rpx;
+  text-align: center;
+  font-weight: bold;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 200rpx 40rpx;
+  color: #999;
+}
+
+.empty-icon {
+  width: 120rpx;
+  height: 120rpx;
+  margin-bottom: 20rpx;
+  opacity: 0.5;
+}
+
+.empty-tip {
+  display: block;
+  font-size: 24rpx;
+  color: #ccc;
+  margin-top: 20rpx;
+}

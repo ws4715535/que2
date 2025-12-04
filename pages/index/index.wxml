@@ -1,0 +1,46 @@
+<!--pages/index/index.wxml-->
+<view class="container">
+  <!-- 搜索栏 -->
+  <view class="search-bar">
+    <image class="search-icon" src="/images/search.png" mode="aspectFit"></image>
+    <input class="search-input" placeholder="搜索麻将装备..." bindinput="onSearchInput" bindconfirm="onSearch" confirm-type="search"/>
+  </view>
+
+  <!-- 分类导航 -->
+  <scroll-view class="category-nav" scroll-x="true">
+    <view class="category-item {{currentCategory === 'all' ? 'active' : ''}}" bindtap="onCategoryTap" data-category="all">全部</view>
+    <view class="category-item {{currentCategory === 'table' ? 'active' : ''}}" bindtap="onCategoryTap" data-category="table">麻将桌</view>
+    <view class="category-item {{currentCategory === 'tiles' ? 'active' : ''}}" bindtap="onCategoryTap" data-category="tiles">麻将牌</view>
+    <view class="category-item {{currentCategory === 'accessories' ? 'active' : ''}}" bindtap="onCategoryTap" data-category="accessories">配件</view>
+    <view class="category-item {{currentCategory === 'other' ? 'active' : ''}}" bindtap="onCategoryTap" data-category="other">其他</view>
+  </scroll-view>
+
+  <!-- 商品列表 -->
+  <scroll-view scroll-y="true" class="product-list" bindscrolltolower="onLoadMore">
+    <block wx:if="{{products.length > 0}}">
+      <view class="product-card" wx:for="{{products}}" wx:key="id" bindtap="onProductTap" data-id="{{item._id}}">
+        <image class="product-image" src="{{item.images[0]}}" mode="aspectFill" wx:if="{{item.images && item.images.length > 0}}"></image>
+        <image class="product-image" src="/images/default-product.png" mode="aspectFill" wx:else></image>
+        
+        <view class="product-info">
+          <view>
+            <view class="product-title">{{item.title}}</view>
+            <view class="product-price">¥{{item.price}}</view>
+          </view>
+          <view class="product-location">{{item.location}}</view>
+        </view>
+      </view>
+      
+      <!-- 加载更多 -->
+      <view class="load-more" wx:if="{{hasMore}}">
+        <text>{{loading ? '加载中...' : '上拉加载更多'}}</text>
+      </view>
+    </block>
+    
+    <!-- 空状态 -->
+    <view class="empty-state" wx:else>
+      <image class="empty-icon" src="/images/empty.png" mode="aspectFit"></image>
+      <text>暂无商品</text>
+    </view>
+  </scroll-view>
+</view>
